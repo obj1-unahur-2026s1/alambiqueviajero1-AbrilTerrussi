@@ -1,0 +1,44 @@
+import vehiculos.*
+import ciudades.*
+import recuerdos.*
+import elAlambiqueViajero.*
+describe "Tests de alambique"{
+
+    test "el recuerdo de paris es el mate"{
+        assert.equals(llaveroTorreEiffel, paris.recuerdo())
+    }
+
+    test"el alambique veloz puede visitar paris "{
+        alambiqueVeloz.combustible(10)
+        assert.that(paris.puedeVisitarse(alambiqueVeloz))
+    }
+
+    test "puede visitar Buenos Aires"{
+        assert.that(buenosAires.puedeVisitarse(alambiqueVeloz))
+    }
+
+    test "luke visito 4 luagres"{
+        luke.lugaresVisitados(paris, alambiqueVeloz)
+        luke.lugaresVisitados(buenosAires, alambiqueVeloz)
+        luke.lugaresVisitados(bagdad, alambiqueVeloz)
+        luke.lugaresVisitados(lasVegas, alambiqueVeloz)
+        assert.equals(1, luke.cantidadDeLugares())
+    }
+
+    test "ultimo recuerdo traido es el mate"{
+        luke.lugaresVisitados(paris, alambiqueVeloz)
+        luke.lugaresVisitados(buenosAires, alambiqueVeloz)
+        luke.lugaresVisitados(bagdad, alambiqueVeloz)
+        luke.lugaresVisitados(lasVegas, alambiqueVeloz)
+        lasVegas.ciudadHomenajeada(buenosAires)
+        luke.cambiarRecuerdoViejo(lasVegas)
+        assert.equals(mate, luke.ultimoRecuerdo())
+    }
+
+    test "puede visitar paris con el superchatarra, dispara 2 veces"{
+        superchatarraespecial.dispararCañon(2)
+        superchatarraespecial.balasGastadas()
+        superchatarraespecial.combustibleAlGastarMunicion()
+        assert.that(paris.puedeVisitarse(superchatarraespecial))
+    }
+}
