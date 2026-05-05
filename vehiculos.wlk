@@ -23,8 +23,8 @@ object alambiqueVeloz {
 object superchatarraespecial {
   
   var combustibleActual = 100
-  var cantidadMunicion = 10
-  var cantidadBalasGastadas = 0
+  var cantidadMunicion = 10 //2
+  var cantidadBalasGastadas = 0 // 8
   var kmPorHora = 30
 
   method municion () = cantidadMunicion
@@ -38,7 +38,7 @@ object superchatarraespecial {
   }
   
   method combustibleAlGastarMunicion(){
-    combustibleActual = combustibleActual - 5 * cantidadBalasGastadas
+    combustibleActual = combustibleActual - 10 * cantidadBalasGastadas
   }
 
   method cantidadCombustible() = combustibleActual

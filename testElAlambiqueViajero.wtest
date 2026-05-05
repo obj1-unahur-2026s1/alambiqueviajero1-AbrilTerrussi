@@ -2,7 +2,7 @@ import vehiculos.*
 import ciudades.*
 import recuerdos.*
 import elAlambiqueViajero.*
-describe "Tests de alambique"{
+describe "Tests de alambique"{ 
 
     test "el recuerdo de paris es el mate"{
         assert.equals(llaveroTorreEiffel, paris.recuerdo())
@@ -35,10 +35,28 @@ describe "Tests de alambique"{
         assert.equals(mate, luke.ultimoRecuerdo())
     }
 
-    test "puede visitar paris con el superchatarra, dispara 2 veces"{
-        superchatarraespecial.dispararCañon(2)
+    test "puede visitar paris con el superchatarra, dispara 7 veces"{
+        superchatarraespecial.dispararCañon(7)
         superchatarraespecial.balasGastadas()
         superchatarraespecial.combustibleAlGastarMunicion()
+        superchatarraespecial.viaje()
         assert.that(paris.puedeVisitarse(superchatarraespecial))
+    }
+
+    test "puede visitar buenos aires con el superchatarra, no dispara"{
+        assert.notThat(buenosAires.puedeVisitarse(superchatarraespecial))
+    }
+
+    test "puede visitar badgad con el superchatarra, dispara 2 veces"{
+        assert.that(bagdad.puedeVisitarse(superchatarraespecial))
+    }
+
+    test "puede visitar lasVegas (homenaje paris) con el superchatarra, dispara 6 veces "{
+        superchatarraespecial.dispararCañon(6)
+        superchatarraespecial.balasGastadas()
+        superchatarraespecial.combustibleAlGastarMunicion()
+        superchatarraespecial.viaje()
+        lasVegas.ciudadHomenajeada(paris)
+        assert.that(lasVegas.puedeVisitarse(superchatarraespecial))
     }
 }
